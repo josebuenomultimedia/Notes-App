@@ -122,7 +122,7 @@ const App = () => {
         <table className="form-table">
           <tbody>
             <tr>
-              <th colSpan="2"><h2>Add/Edit Note</h2></th>
+              <th colSpan="2"><h2>Add Note</h2></th>
             </tr>
             <tr>
               <td>

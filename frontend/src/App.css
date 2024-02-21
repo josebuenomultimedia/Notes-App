@@ -1,167 +1,111 @@
+/* App.css */
+
 body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #f5f5f5;
+  background-color: #f0f0f0; /* Light gray background */
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
 }
 
 #app-container {
-  width: 80%;
-  max-width: 1200px;
   display: flex;
-  box-sizing: border-box;
+  flex-direction: column; /* Change to column layout on smaller screens */
+  align-items: center;
+  height: 100vh;
+  overflow-y: auto; /* Add vertical scrollbar when content exceeds viewport height */
+  padding: 20px; /* Add padding to the app container */
 }
 
-#add-edit-container, #note-container {
-  flex: 1;
+#note-container {
+  width: 100%; /* Adjust the width of the note container */
+  margin-top: 20px;
+  padding: 20px; /* Add padding to the note container */
+}
+
+
+#add-edit-container {
+  background-color: #fff; /* White background for the form container */
   padding: 20px;
-  box-sizing: border-box;
-  background-color: #fff;
-  border-radius: 5px;
+  border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Default width for smaller screens */
+  max-width: 600px; /* Maximum width for larger screens */
+  margin: 0 auto; /* Center the container horizontally */
 }
 
-h1 {
-  color: #333;
-  text-align: center;
+#add-edit-container textarea {
+  resize: none; /* Disable resizing for the textarea */
 }
 
-/* Add a new class for the form table */
 .form-table {
   width: 100%;
 }
 
-.form-table th, .form-table td {
-  padding: 10px;
-  text-align: left;
-}
-
-.form-table label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-/* Add a new class for the note tables */
 .note-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .note-table th, .note-table td {
+  padding: 12px;
   border: 1px solid #ddd;
-  padding: 15px;
   text-align: left;
 }
 
 .note-table th {
-  background-color: #f2f2f2;
+  background-color: #4CAF50; /* Green header background color */
+  color: white;
 }
 
-.category-column {
-  width: 20%;
+.note-table td {
+  background-color: #fff; /* White background for table cells */
 }
 
-/* Adjust existing styles as needed */
-.table-container {
-  display: flex;
-  justify-content: space-between;
+/* Buttons */
+.add-button, .edit-button, .delete-button, .archive-button, .unarchive-button, .remove-category-button {
+  background-color: #4CAF50; /* Green button color */
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+  margin-bottom: 5px; /* Add margin bottom to buttons */
 }
 
-.note-content {
-  display: flex;
-  justify-content: space-between;
+.add-button:hover, .edit-button:hover, .delete-button:hover, .archive-button:hover, .unarchive-button:hover, .remove-category-button:hover {
+  background-color: #45a049; /* Darker green on hover */
 }
 
-.note p {
+/* Input and Textarea */
+input[type="text"], textarea {
+  width: calc(100% - 22px); /* Adjust width and subtract padding */
+  padding: 10px;
+  margin: 5px 0 15px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+/* Filter input */
+#categoryFilter {
+  padding: 8px;
   margin: 0;
 }
 
-.category {
-  color: #555;
-}
+/* Adjustments for smaller screens */
+@media (max-width: 600px) {
+  #note-container {
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
 
-.note {
-  transition: transform 0.3s;
-}
+  .note-table {
+    font-size: 14px;
+  }
 
-.note:hover {
-  transform: scale(1.02);
-}
-
-.note button {
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  padding: 8px 15px;
-  margin-top: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.note button:hover {
-  background-color: #2980b9;
-}
-
-.note input[type="text"],
-.note textarea {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-
-.note button.add-button {
-  background-color: #2ecc71;
-}
-
-.note button.add-button:hover {
-  background-color: #27ae60;
-}
-
-.note button.edit-button {
-  background-color: #f39c12;
-}
-
-.note button.edit-button:hover {
-  background-color: #d35400;
-}
-
-.note button.delete-button {
-  background-color: #e74c3c;
-}
-
-.note button.delete-button:hover {
-  background-color: #c0392b;
-}
-
-.note button.archive-button {
-  background-color: #34495e;
-}
-
-.note button.archive-button:hover {
-  background-color: #2c3e50;
-}
-
-.note button.unarchive-button {
-  background-color: #34495e;
-}
-
-.note button.unarchive-button:hover {
-  background-color: #2c3e50;
-}
-
-.note button.remove-category-button {
-  background-color: #e74c3c;
-}
-
-.note button.remove-category-button:hover {
-  background-color: #c0392b;
+  .add-button, .edit-button, .delete-button, .archive-button, .unarchive-button, .remove-category-button {
+    width: 100%; /* Make buttons full width on smaller screens */
+  }
 }
