@@ -11,14 +11,15 @@ const App = () => {
   const [categoryFilter, setCategoryFilter] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/notes')
+    axios.get('http://localhost:5000/api/notes') // Fetch active notes
       .then(response => setNotes(response.data))
       .catch(error => console.error('Error fetching active notes:', error));
-
-    axios.get('http://localhost:5000/api/archivedNotes')
+  
+    axios.get('http://localhost:5000/api/notes/archived') // Fetch archived notes
       .then(response => setArchivedNotes(response.data))
       .catch(error => console.error('Error fetching archived notes:', error));
   }, []);
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
